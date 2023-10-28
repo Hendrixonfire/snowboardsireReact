@@ -11,7 +11,7 @@ function MediaElementWithFullDescription(params){
     const [buttonSelected, setSelectedButton] = useState('Product Details');
     const [shopItems, setShopItems] = useState([]);
     const getData = async () =>{
-        const  { data } = await axios.post("http://localhost:4000/api/getshopitems",{
+        const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
         });
         
         // console.log(data);
