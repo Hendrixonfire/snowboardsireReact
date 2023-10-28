@@ -12,7 +12,7 @@ function SessionsReactPage(){
  const [data, setSessions] = useState([]);
  const [isJoined, setIsJoined] = useState(false);
  const getData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/sessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/sessions",{
       username: lessonUsername
     });
     
