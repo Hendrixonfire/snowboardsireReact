@@ -59,8 +59,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash())
 app.use(methodOverride('_method'))
 app.use(cors({
-    origin:"https://snowboardaddictionreact.onrender.com"
-  
+    origin:"http://localhost:3000",// react app app.listen()
+    credentials: true
 }));
 app.options('*',cors());
 app.use(session({
