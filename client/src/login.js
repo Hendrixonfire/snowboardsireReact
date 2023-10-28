@@ -148,7 +148,7 @@ const required = (value) => {
         </nav>
        
         <div className="loginFormDivLogin">
-            <span className="iconCloseLogin"><ion-icon name="close-outline"></ion-icon></span>
+            <span className="iconCloseLogin"></span>
          <div className="formBoxLogin loginLogin">
             <h2>Login</h2>
             <div className="errorDivLogin">
