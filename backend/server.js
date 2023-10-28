@@ -252,7 +252,7 @@ app.post('/api/sessions', async (req, res) => {
         res.status(500).json({ error: error, message: 'drrr' })
     }
 })
-app.get('/api/getshopitems', async (req, res) => {
+app.post('/api/getshopitems', async (req, res) => {
   try {
       
       console.log(`Getting shopitems`);
