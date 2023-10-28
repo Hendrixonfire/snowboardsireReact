@@ -34,12 +34,12 @@ const login = (loginEmail, loginPassword) => {
  const logout = () => {
    localStorage.removeItem("user");
    localStorage.removeItem("cart");
-   return axios.post('https://snowboardaddictionreact.onrender.com/api/logout').
-   then((response) => {
+   // return axios.post('https://snowboardaddictionreact.onrender.com/api/logout').
+   // then((response) => {
   
-     return response.data;
+   //   return response.data;
    
-   });
+   // });
    
  
    
