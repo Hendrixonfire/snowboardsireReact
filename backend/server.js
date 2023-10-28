@@ -391,7 +391,7 @@ app.patch('/api/update/:username', async (req, res) => {
 }); 
 // const { data } = await axios.patch(`/api/update/${username}`, fields)
 
-app._router.delete('/api/logout', (req,res)=>{
+app._router.post('/api/logout', (req,res)=>{
     req.logout(function(err) {
         if (err) { return next(err); }
         res.redirect('/');
