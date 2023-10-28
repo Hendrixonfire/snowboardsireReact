@@ -19,7 +19,7 @@ function UserPageReact(){
   const [shopItems, setShopItems] = useState([]);
   async function getData() {
       try{
-       const {data} = await axios.post("http://localhost:4000/api/getshopitems",{
+       const {data} = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
         })
         
         console.log(data);
