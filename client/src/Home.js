@@ -305,23 +305,8 @@ useEffect(()=>{
 
  let navigate = useNavigate(); 
 const handleLogout = () => {
-    AuthService.logout().then(
-      () => {
-        console.log("User logged out")
-        // navigate("/");
-        window.location.reload();
-      },
-      (error) => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
+    AuthService.logout();
    
-      }
-    );
  
 };
 
