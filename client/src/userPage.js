@@ -74,7 +74,7 @@ function UserPageReact(){
     }
 
  const getJoinedData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
       username: lessonUsername
     });
     
@@ -84,7 +84,7 @@ function UserPageReact(){
  }
 
  const getReviewData = async () =>{
-  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
     username: lessonUsername
   });
   
@@ -113,7 +113,7 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
     username: lessonUsername
   })
   // console.log(data);
@@ -129,7 +129,7 @@ useEffect(() => {
 // },[orderData.length])
 
 const getLastOrder = async ()=>{
-  const  { data } = await axios.post('/api/getlastorder',{
+  const  { data } = await axios.post('https://snowboardaddictionreact.onrender.com/api/getlastorder',{
     username: lessonUsername
   })
   setOrderData(data.orders[data.orders.length - 1][0]);
