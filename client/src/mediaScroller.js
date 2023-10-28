@@ -6,7 +6,7 @@ import MediaElement from './mediaElement';
 function MediaScrollerBig(props){
     const [shopItems, setShopItems] = useState([]);
     const getData = async () =>{
-        const  { data } = await axios.post("http://localhost:4000/api/getshopitems",{
+        const  { data } = await axios.get("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
         });
         
         // console.log(data);
