@@ -59,9 +59,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash())
 app.use(methodOverride('_method'))
 app.use(cors({
-    origin:"http://localhost:3000",// react app app.listen()
+    origin:"https://slug-panel.onrender.com",// react app app.listen()
     credentials: true
 }));
+app.options('*',cors());
 app.use(session({
     secret: 'somesecret',
     resave: false,
