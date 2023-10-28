@@ -34,6 +34,7 @@ const login = (loginEmail, loginPassword) => {
  const logout = () => {
    localStorage.removeItem("user");
    localStorage.removeItem("cart");
+   window.location.reload();
    // return axios.post('https://snowboardaddictionreact.onrender.com/api/logout').
    // then((response) => {
   
