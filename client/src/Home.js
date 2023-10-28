@@ -308,8 +308,8 @@ const handleLogout = () => {
     AuthService.logout().then(
       () => {
         console.log("User logged out")
-        navigate("/");
-        // window.location.reload();
+        // navigate("/");
+        window.location.reload();
       },
       (error) => {
         const resMessage =
