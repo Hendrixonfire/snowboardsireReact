@@ -59,8 +59,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash())
 app.use(methodOverride('_method'))
 app.use(cors({
-    origin:"https://slug-panel.onrender.com",// react app app.listen()
-    credentials: true
+    origin:"https://snowboardaddictionreactfront.onrender.com"
+  
 }));
 app.options('*',cors());
 app.use(session({
