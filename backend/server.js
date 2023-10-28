@@ -394,7 +394,7 @@ app.patch('/api/update/:username', async (req, res) => {
 app.post('/api/logout', (req,res)=>{
     req.logout(function(err) {
         if (err) { return next(err); }
-        res.redirect('/');
+        res.redirect('https://snowboardaddictionreactfront.onrender.com');
     });
 })
 // function checkAuthenticated(req, res, next){
