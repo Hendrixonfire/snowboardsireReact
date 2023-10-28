@@ -26,7 +26,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     }
 )
-.then(() => console.log("DB ok"))
+.then(() => console.log("MongoDB ok"))
 .catch((err) => console.log("DB err", err));;
 
 initializePassport(
@@ -416,5 +416,5 @@ app._router.delete('/api/logout', (req,res)=>{
 // }
 //Server start
 app.listen(4000, ()=>{
-    console.log('Server has started');
+    console.log('Backend Server has started');
 })
