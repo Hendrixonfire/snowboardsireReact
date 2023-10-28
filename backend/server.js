@@ -59,7 +59,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(flash())
 app.use(methodOverride('_method'))
 app.use(cors({
-    origin:"https://snowboardaddictionreactfront.onrender.com"
+    origin:"https://snowboardaddictionreact.onrender.com"
   
 }));
 app.options('*',cors());
