@@ -4,7 +4,7 @@
   app.use(
     "/api",
      createProxyMiddleware({
-      target: "http://localhost:4000",
+      target: "https://snowboardaddictionreact.onrender.com",
       changeOrigin: true,
     })
   );
