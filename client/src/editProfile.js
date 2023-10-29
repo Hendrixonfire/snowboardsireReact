@@ -21,7 +21,7 @@ function EditProfilePageReact(){
   const navigate = useNavigate();
   console.log(username);
   const getJoinedData = async () =>{
-    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
+    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
       username: lessonUsername
     });
     
@@ -30,7 +30,7 @@ function EditProfilePageReact(){
 
  }
  const getReviewData = async () =>{
-  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
+  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
     username: lessonUsername
   });
   
@@ -55,7 +55,7 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
+  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
     username: lessonUsername
   })
   console.log(data);
@@ -175,7 +175,7 @@ const handleSendReview = (event, param1, param2) => {
                   <div className='userEditNameAndAvatarContainer'>
                   <form className="editForm" onSubmit={saveChanges}>
                     <img
-                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
+                    src={`http://localhost:4000${avatar}`}
                     className="avatar"
                     alt="logo"
                     onClick={() => inputAvatar.current.click()}

@@ -4,16 +4,18 @@ import {Link, useLocation,useNavigate,Router} from 'react-router-dom'
 import TestimonialCard from './testimonialCard'
 import axios from 'axios'
 import { generator, getMultipleRandom } from './randomGenerator';
+import { motion, useCycle } from "framer-motion";
 import MediaScrollerBig from './mediaScroller';
 import AuthService from './services/auth.service';
 
 // import { Helmet } from "react-helmet-async"
 
 function Home() {
-
+  const [mobile, setMobile] = useState(false);
+  const isMobile = useRef(false);
   const initialCart = JSON.parse(localStorage?.getItem('cart')) ?  JSON.parse(localStorage?.getItem('cart')) : [];
   const [cart, setCart] = useState(initialCart);
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
   const [cartQuantity, setCartQuantity] = useState(0);
   const [cards, setCard] = useState([
     {cardUserName: 'Daniel Clifford',
@@ -305,11 +307,117 @@ useEffect(()=>{
 
  let navigate = useNavigate(); 
 const handleLogout = () => {
-    AuthService.logout();
+    AuthService.logout().then(
+      () => {
+        console.log("User logged out")
+        navigate("/");
+        // window.location.reload();
+      },
+      (error) => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+
    
+      }
+    );
  
 };
 
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 260px 38px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2,
+    },
+  }),
+  closed: {
+    clipPath: "circle(30px at 260px 38px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40,
+    },
+  },
+};
+
+const variants = {
+open: {
+  opacity: 1,
+  transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+},
+closed: {
+  opacity: 0,
+  transition: { staggerChildren: 0.05, staggerDirection: -1 },
+},
+};
+
+const livariants = {
+open: {
+  y: 0,
+  opacity: 1,
+  transition: {
+    y: { stiffness: 1000, velocity: -100 },
+  },
+},
+closed: {
+  y: 50,
+  opacity: 0,
+  transition: {
+    y: { stiffness: 1000 },
+  },
+},
+};
+const [isOpen, toggleOpen] = useCycle(false, true);
+const [isDisplayNone, setIsDisplayNone] = useState(false);
+React.useEffect(() => {
+  let timeout;
+  if (!isOpen) {
+    timeout = setTimeout(() => {
+      setIsDisplayNone(true);
+    }, 1000);
+  } else {
+    setIsDisplayNone(false);
+  }
+  return () => clearTimeout(timeout);
+}, [isOpen]);
+
+useEffect(() => {
+  const resize = () => {
+    if (window.innerWidth < 650 && isMobile.current) {
+      isMobile.current = false;
+      setMobile(false);
+    } else if (window.innerWidth >= 720 && !isMobile.current) {
+      isMobile.current = true;
+      setMobile(true);
+    }
+  };
+
+  window.addEventListener("resize", resize);
+  resize();
+
+  return () => {
+    window.removeEventListener("resize", resize);
+  };
+}, []);
+
+
+
+const Path = (props) => (
+<motion.path
+  fill="transparent"
+  strokeWidth="5"
+  stroke="hsl(276, 100%, 50%)"
+  strokeLinecap="round"
+  {...props}
+/>
+);
   /*
   useEffect(()=>{
 
@@ -335,6 +443,8 @@ const handleLogout = () => {
 // useEffect(()=>{
 //   checkIfCartExists();
 // },[])
+
+
       return (
         
       //   <>
@@ -355,7 +465,75 @@ const handleLogout = () => {
                 <nav className="navigation">
                   <img className="logo" src="images/SA_Primary_Black_Lettering_CMYK_40795a05-689d-4bb9-95de-a4b1596bfaa0_110x.avif" width="55" height="55"  alt="" />
           
-          { (localStorage.getItem("user") && localStorage.getItem("cart"))  ? <div class="navUserLogout">
+          {!mobile ? (
+            <>
+              <motion.nav
+              initial={false}
+              animate={isOpen ? "open" : "closed"}
+              className="nav-mobile"
+              >
+              <motion.div className="background" variants={sidebar} >
+              <motion.ul
+                variants={variants}
+                className="sidebar"
+                // style={{
+                //   zIndex: isOpen ? 4 : null,
+                //   display: isDisplayNone ? "none" : null,
+                // }}
+              >
+                <motion.div className="list-item" variants={livariants}>
+               
+           
+           <Link class="cart-link header-link" to="/Checkout"  >
+           <img class="cart-icon" src="images/icons/cart-icon.png"/>
+           <div class="cart-quantity js-cart-quantity">{JSON.parse(localStorage.getItem("cart")).length}</div>
+           <div class="cart-text">Cart</div>
+           </Link> 
+ 
+           <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-user" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4>   <button class="logOutButton" type="submit" id="glow-on-hover" onClick={handleLogout}>Logout</button>
+         
+           
+         
+                </motion.div>
+            
+              
+             
+                
+              
+                
+              </motion.ul>
+              </motion.div>
+             
+              <button className="sidebar-btn" onClick={toggleOpen}>
+                <svg width="23" height="23" viewBox="0 0 23 23" className='burgerMenuBtn'>
+                  <Path
+                    variants={{
+                      closed: { d: "M 2 2.5 L 20 2.5" },
+                      open: { d: "M 3 16.5 L 17 2.5" },
+                    }}
+                  />
+                  <Path
+                    d="M 2 9.423 L 20 9.423"
+                    variants={{
+                      closed: { opacity: 1 },
+                      open: { opacity: 0 },
+                    }}
+                    transition={{ duration: 0.1 }}
+                  />
+                  <Path
+                    variants={{
+                      closed: { d: "M 2 16.346 L 20 16.346" },
+                      open: { d: "M 3 2.5 L 17 16.346" },
+                    }}
+                  />
+                </svg>
+              </button>
+              </motion.nav>
+              </>
+
+          )
+          
+         : (localStorage.getItem("user") && localStorage.getItem("cart"))  ? <div class="navUserLogout">
            
           <Link class="cart-link header-link" to="/Checkout"  >
           <img class="cart-icon" src="images/icons/cart-icon.png"/>

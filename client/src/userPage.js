@@ -19,7 +19,7 @@ function UserPageReact(){
   const [shopItems, setShopItems] = useState([]);
   async function getData() {
       try{
-       const {data} = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
+       const {data} = await axios.post("http://localhost:4000/api/getshopitems",{
         })
         
         console.log(data);
@@ -74,7 +74,7 @@ function UserPageReact(){
     }
 
  const getJoinedData = async () =>{
-    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
+    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
       username: lessonUsername
     });
     
@@ -84,7 +84,7 @@ function UserPageReact(){
  }
 
  const getReviewData = async () =>{
-  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
+  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
     username: lessonUsername
   });
   
@@ -113,7 +113,7 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
+  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
     username: lessonUsername
   })
   // console.log(data);
@@ -129,7 +129,7 @@ useEffect(() => {
 // },[orderData.length])
 
 const getLastOrder = async ()=>{
-  const  { data } = await axios.post('https://snowboardaddictionreact.onrender.com/api/getlastorder',{
+  const  { data } = await axios.post('/api/getlastorder',{
     username: lessonUsername
   })
   setOrderData(data.orders[data.orders.length - 1][0]);
@@ -196,7 +196,7 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userMainInfoContainer">
                   <div className='userNameAndAvatarContainer'>
                     <img
-                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
+                    src={`http://localhost:4000${avatar}`}
                     className="avatar"
                     alt="logo"
                   />
@@ -266,7 +266,7 @@ const handleSendReview = (event, param1, param2) => {
 
                       <div class="payment-summary-row total-row">
                         <div>Order total:</div>
-                        <div class="payment-summary-money">{(orderData?.TotalPrice)} (includes 10% tax)</div>
+                        <div class="payment-summary-money">{formatCurrency((orderData?.TotalPrice) * 100)} (includes 10% tax)</div>
                       </div>
 
                     </div>

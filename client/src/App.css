@@ -1197,7 +1197,7 @@ user-select: none;
   nav{
     width: 113%;
     left: -17px;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 
 
   }
@@ -1212,13 +1212,13 @@ display: flex;
 flex-direction: column-reverse;
 }
 .userReviewInputText{
-  width: 100%;
+  width: 250px;
   height: 170px;
   margin-top: 10px;
   border-radius: 6px;
   flex:none;
-  min-width: 250px;
-  max-width:600px
+  /* min-width: 250px;
+  max-width:250px */
 
 
 
@@ -1494,7 +1494,7 @@ color: white;
 border: none;
 cursor: pointer;
 position: relative;
-text-decoration: ;
+/* text-decoration: ; */
  &:after{
   content: "";
   margin: auto;
@@ -2499,6 +2499,7 @@ RegisterPage css
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+
 }
 .UserEditPageContainer {
   width: 100vw;
@@ -2665,6 +2666,7 @@ text-decoration: none;
 font-weight: 500;
 width: 90vw;
 z-index: 10;
+
 }
 .navigationEditUserPage{
   margin: auto;
@@ -2911,6 +2913,9 @@ z-index: 10;
       filter: blur(20px);
       opacity: 1;
     
+    }
+    @media (max-width:400px){
+      font-size: .9em;
     }
   }
   .editButton{
@@ -3200,17 +3205,84 @@ z-index: 10;
   margin-top: 35px;
   grid-row-start: 1;
   border-radius: 2vw;
-  min-width: 500px;
+  min-width: 300px;
   max-width: 1000px;
   z-index:1;
+  max-height: 1000px;
+
+
 }
 .userEditMainInfoContainer{
   margin-top: 10vh;
   background-color: black;
 
   border-radius: 2vw;
-  min-width: 350px;
+  min-width: 300px;
   z-index:1;
+ 
+}
+.nav-mobile{
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  width: 90vw;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sidebar{
+  padding: 25px;
+  position: relative;
+  z-index: 4;
+
+  max-width: 250px;
+  align-self: self-start;
+  
+}
+.burgerMenuBtn{
+  display: inline;
+}
+.sidebar-btn{
+  outline: none;
+  border: none;
+
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent    ;
+  z-index: 4;
+}
+.list-item{
+  gap:1rem;
+  width: 180px;
+  padding: 10px 0px 10px 0px;
+  list-style: none;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+}
+.background{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: -32px;
+  right: -4px;
+
+  height: 500px;
+  /* top: 0px;
+  right: 11px;
+  width: 44vw;
+  height: 500px; */
+  /* background-image: linear-gradient(62deg, #d2e6fb 0%, #f7eefe 100%);
+  box-shadow: -4px 1px 6px rgba(0, 0, 0, 0.2);
+  z-index: 3; */
 }
 .userNameAndAvatarContainer{
   display: flex;
@@ -3254,19 +3326,29 @@ grid-row-start: 1;
  background-color: black;
  border-radius: 2vw;
  position: relative;
- min-width: 500px;
+ min-width: 340px;
  z-index:1;
+  @media  (max-width:400px ){
+  font-size: .8em;
+  padding: 5px 5px 5px 5px;
+ }
+
+ 
 }
 .joinedSessionsList{
   margin: 25px;
   position: relative;
+  @media  (max-width:400px ){
+   margin: 0px 5px 10px 0px;
+    padding-left: 20px;
+   }
 }
 @media (max-width:1020px){
   .userInfoContainer{
 
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    display: grid;
+    /* align-items: center; */
+    grid-template-columns: repeat(auto-fit, minmax(min(100%,350px), 1fr));
     position: relative;
     width: 80vW;
     margin: auto;
@@ -3274,8 +3356,28 @@ grid-row-start: 1;
   
   }
   .userMainInfoContainer{
-    width: 500px;
+    min-width: 340px;
     height: 950px;
+    width: 100%;
+    align-self: center;
+  }
+}
+@media (max-width:400px){
+  .userInfoContainer{
+    display: table;
+  
+
+
+  
+  
+  }
+  .userMainInfoContainer{
+    width: 340px;
+    height: 600px;
+    overflow-x: scroll;
+    margin-bottom: 25px;
+    margin-top: 50px;
+ 
   }
 }
 .cartCanvas{
