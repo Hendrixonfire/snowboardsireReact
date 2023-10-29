@@ -465,7 +465,7 @@ const Path = (props) => (
                 <nav className="navigation">
                   <img className="logo" src="images/SA_Primary_Black_Lettering_CMYK_40795a05-689d-4bb9-95de-a4b1596bfaa0_110x.avif" width="55" height="55"  alt="" />
           
-          {!mobile ? (
+          {(!mobile && localStorage.getItem("user") && localStorage.getItem("cart")) ? (
             <>
               <motion.nav
               initial={false}
