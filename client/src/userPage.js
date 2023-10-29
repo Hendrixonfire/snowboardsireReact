@@ -129,7 +129,7 @@ useEffect(() => {
 // },[orderData.length])
 
 const getLastOrder = async ()=>{
-  const  { data } = await axios.post('/api/getlastorder',{
+  const  { data } = await axios.post('https://snowboardaddictionreact.onrender.com/api/getlastorder',{
     username: lessonUsername
   })
   setOrderData(data.orders[data.orders.length - 1][0]);
