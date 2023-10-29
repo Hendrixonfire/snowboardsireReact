@@ -175,7 +175,7 @@ const handleSendReview = (event, param1, param2) => {
                   <div className='userEditNameAndAvatarContainer'>
                   <form className="editForm" onSubmit={saveChanges}>
                     <img
-                    src={`http://localhost:4000${avatar}`}
+                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
                     className="avatar"
                     alt="logo"
                     onClick={() => inputAvatar.current.click()}
