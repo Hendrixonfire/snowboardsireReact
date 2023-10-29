@@ -196,7 +196,7 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userMainInfoContainer">
                   <div className='userNameAndAvatarContainer'>
                     <img
-                    src={`http://localhost:4000${avatar}`}
+                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
                     className="avatar"
                     alt="logo"
                   />
