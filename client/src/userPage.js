@@ -19,7 +19,7 @@ function UserPageReact(){
   const [shopItems, setShopItems] = useState([]);
   async function getData() {
       try{
-       const {data} = await axios.post("http://localhost:4000/api/getshopitems",{
+       const {data} = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
         })
         
         console.log(data);
@@ -74,7 +74,7 @@ function UserPageReact(){
     }
 
  const getJoinedData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
       username: lessonUsername
     });
     
@@ -84,7 +84,7 @@ function UserPageReact(){
  }
 
  const getReviewData = async () =>{
-  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
     username: lessonUsername
   });
   
@@ -113,7 +113,7 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
     username: lessonUsername
   })
   // console.log(data);
@@ -196,7 +196,7 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userMainInfoContainer">
                   <div className='userNameAndAvatarContainer'>
                     <img
-                    src={`http://localhost:4000${avatar}`}
+                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
                     className="avatar"
                     alt="logo"
                   />
