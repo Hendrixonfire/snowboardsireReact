@@ -15,6 +15,7 @@ const Review = require('./userReview')
 const Shopitems = require('./shopItems')
 const flash = require('express-flash')
 const multer = require('multer');
+const fs =  require("fs");
 //-----Import ends--------///
 
 
@@ -41,6 +42,9 @@ initializePassport(
 //Multer
 const storage = multer.diskStorage({
     destination: (_, __, cb) => {
+         if (!fs.existsSync("uploads")) {
+      fs.mkdirSync("uploads");
+         }
       cb(null, "uploads");
     },
     filename: (_, file, cb) => {
