@@ -329,7 +329,7 @@ const handleLogout = () => {
 
 const sidebar = {
   open: (height = 1000) => ({
-    clipPath: `circle(${height * 2 + 200}px at 260px 38px)`,
+    clipPath: `circle(${height * 2 + 200}px at 0px 0px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -337,7 +337,7 @@ const sidebar = {
     },
   }),
   closed: {
-    clipPath: "circle(30px at 260px 38px)",
+    clipPath: "circle(30px at 185px 68px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -490,7 +490,11 @@ const Path = (props) => (
            <div class="cart-text">Cart</div>
            </Link> 
  
-           <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-user" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4>   <button class="logOutButton" type="submit" id="glow-on-hover" onClick={handleLogout}>Logout</button>
+           <div>
+          <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-user" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4> 
+          <span>(Visit your page)</span>
+          </div>
+            <button class="logOutButton" type="submit" id="glow-on-hover" onClick={handleLogout}>Logout</button>
          
            
          
@@ -505,7 +509,7 @@ const Path = (props) => (
               </motion.div>
              
               <button className="sidebar-btn" onClick={toggleOpen}>
-                <svg width="23" height="23" viewBox="0 0 23 23" className='burgerMenuBtn'>
+                <svg width="40" height="40" viewBox="0 0 23 23" className='burgerMenuBtn'>
                   <Path
                     variants={{
                       closed: { d: "M 2 2.5 L 20 2.5" },
@@ -531,16 +535,15 @@ const Path = (props) => (
               </motion.nav>
               </>
 
-          )
-          
-         : (localStorage.getItem("user") && localStorage.getItem("cart"))  ? <div class="navUserLogout">
+          ) : 
+          (localStorage.getItem("user") && localStorage.getItem("cart"))  ? <div class="navUserLogout">
            
           <Link class="cart-link header-link" to="/Checkout"  >
           <img class="cart-icon" src="images/icons/cart-icon.png"/>
           <div class="cart-quantity js-cart-quantity">{JSON.parse(localStorage.getItem("cart")).length}</div>
           <div class="cart-text">Cart</div>
           </Link> 
-
+            
           <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-user" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4>   <button class="logOutButton" type="submit" id="glow-on-hover" onClick={handleLogout}>Logout</button>
         
           
@@ -552,7 +555,7 @@ const Path = (props) => (
      
 
               
-             
+                   
           }
                
              
