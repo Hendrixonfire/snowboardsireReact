@@ -2795,6 +2795,16 @@ z-index: 10;
    border-radius: 5px;
    backdrop-filter: blur(10px) ;
    border-top: 1px solid rgba(255,255,255, 0.5);
+   @media(max-width:400px){
+    width: 90vw;
+    grid-template-columns: 60px 60px 1fr;
+   }
+  }
+  .sessionBorderContainer div{
+    @media(max-width:400px){
+      font-size: .8em;
+      
+     }
   }
   .lessonType{
     text-transform: capitalize;
@@ -2829,6 +2839,9 @@ z-index: 10;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
+    @media(max-width:400px){
+      width: 65px;
+    }
     &:hover{
       background-color: black;
       color: whitesmoke;
@@ -2870,11 +2883,12 @@ z-index: 10;
       opacity: 1;
     
     }
+   
   }
   .sessionLeaveButton{
      
     color:black;
-    min-width: 120px;
+    /* min-width: 120px; */
     position: relative;
     height: 35px;
     border-radius: 10px;
@@ -2991,12 +3005,15 @@ z-index: 10;
   .gridCollumnTitles{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-flow: column;
+    
     grid-auto-flow: column;
     margin: auto;
     color:whitesmoke;
     width: 80vw;
     background-blend-mode: multiply;
+    @media (max-width:400px){
+      width: 90vw;
+    }
   }
   @media (max-width:850px ){
     .sessionBorderContainer{
@@ -3037,7 +3054,11 @@ z-index: 10;
     .searchContainer{
       display:flex;
       justify-content: center;
-    
+      @media (max-width:400px){
+        width: 320px;
+        margin: auto;
+      
+      }
     }
     select{
       max-width: 25ch;
@@ -3063,6 +3084,7 @@ z-index: 10;
       backdrop-filter: blur(10px) ;
       border-top: 1px solid rgba(255,255,255, 0.5);
         color: black;
+      
     }
     
     .labelClass{
@@ -3078,10 +3100,15 @@ z-index: 10;
       border-radius: 5px;
       backdrop-filter: blur(10px) ;
       border-top: 1px solid rgba(255,255,255, 0.5);
-      
+      @media(max-width:400px){
+        font-size: .8em;
+      }
      }
      .userSearchInput{
       display: grid;
+      @media(max-width:400px){
+        font-size: .8em;
+      }
      }
 .bigSearchContainer{
   gap:1rem;
@@ -3366,6 +3393,7 @@ grid-row-start: 1;
 
  
 }
+
 .joinedSessionsList{
   margin: 25px;
   position: relative;
