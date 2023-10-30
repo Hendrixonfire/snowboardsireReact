@@ -71,7 +71,7 @@ const handleChangeFile = async (event) => {
     const file = event.target.files[0];
     formData.append("image", file);
 
-    const { data } = await axios.post("/api/upload", formData);
+    const { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/upload", formData);
 
     setAvatar(data.url);
 
@@ -89,7 +89,7 @@ const saveChanges = async (event) => {
       avatar
     };
 
-    await axios.patch(`/api/update/${username}`, fields)
+    await axios.patch(`https://snowboardaddictionreact.onrender.com/api/update/${username}`, fields)
      
     setLoading(false);
 
