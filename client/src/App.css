@@ -2816,6 +2816,9 @@ z-index: 10;
     grid-column: 3;
     gap:1rem;
     font-size: 1rem;
+    @media(max-width:400px){
+      gap:0px
+    }
   }
  
   .sessionJoinButton{
@@ -2925,7 +2928,7 @@ z-index: 10;
     
     }
     @media (max-width:400px){
-      font-size: .9em;
+      font-size: .8em;
     }
   }
   .editButton{
@@ -3357,7 +3360,7 @@ grid-row-start: 1;
  min-width: 340px;
  z-index:1;
   @media  (max-width:400px ){
-  font-size: .8em;
+  font-size: .7em;
   padding: 5px 5px 5px 5px;
  }
 
