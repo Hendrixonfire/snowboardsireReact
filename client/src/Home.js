@@ -339,7 +339,7 @@ const sidebar = {
   closed: {
     clipPath: "circle(30px at 165px 68px)",
     transition: {
-      delay: 0.5,
+      delay: 0.05,
       type: "spring",
       stiffness: 400,
       damping: 40,
@@ -460,6 +460,9 @@ const Path = (props) => (
       
        
             <main>
+              {
+            (isOpen) ?  <div className='bigDivOpenedNav' onClick={toggleOpen}></div> : null
+              }
               <header className="loginHeader">
               {/* <ShoppingCartReact handleCartClode={closeCart}/>  */}
                 <nav className="navigation">
@@ -533,6 +536,10 @@ const Path = (props) => (
                 </svg>
               </button>
               </motion.nav>
+              
+             
+              
+            
               </>
 
           ) : 
