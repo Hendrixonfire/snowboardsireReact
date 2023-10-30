@@ -3296,7 +3296,7 @@ z-index: 10;
 .bigDivOpenedNav{
 width: 100%;
 height: 100%;
-z-index: 3;
+z-index: 1;
 position: absolute;
 background: transparent;
 
@@ -3332,6 +3332,7 @@ background: transparent;
   justify-content: space-around;
   position: relative;
   height: 425px;
+  z-index: 10;
 
 }
 .background{
@@ -3346,7 +3347,7 @@ background: transparent;
   right: 11px;
   width: 44vw;
   height: 500px; */
-   background-image: linear-gradient(62deg, #d2e6fb 0%, #f7eefe 100%);
+  background-image: linear-gradient(62deg, #096bd4 0%, #f7eefe 100%);
   box-shadow: -4px 1px 6px rgba(0, 0, 0, 0.2);
   z-index: 3; 
 }
