@@ -479,10 +479,7 @@ const Path = (props) => (
               <motion.ul
                 variants={variants}
                 className="sidebar"
-                // style={{
-                //   zIndex: isOpen ? 4 : null,
-                //   display: isDisplayNone ? "none" : null,
-                // }}
+             
               >
                 <motion.div className="list-item" variants={livariants}>
                
@@ -494,10 +491,10 @@ const Path = (props) => (
            </Link> 
  
            <div>
-          <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-user" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4> 
+          <h4 className="userGreeting"> Hi <Link className='userPageLink' prefetch={false} reloadDocument id="glow-on-hover-mobile-userpage" to={`/${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))}`}> {JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} </Link> </h4> 
           <span>(Visit your page)</span>
           </div>
-            <button class="logOutButton" type="submit" id="glow-on-hover" onClick={handleLogout}>Logout</button>
+          <button class="logOutButtonMobile" type="submit" id="glow-on-hover-mobile-logout" onClick={handleLogout}>Logout</button>
          
            
          
