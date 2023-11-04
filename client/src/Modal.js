@@ -16,8 +16,6 @@ function Modal({
   const clickLogout = () => {
     AuthService.logout().then(
         () => {
-          console.log("User logged out")
-          setActive(false);
           navigate("/");
         },
         (error) => {
