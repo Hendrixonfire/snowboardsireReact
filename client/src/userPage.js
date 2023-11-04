@@ -2,10 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { useLocation,useParams } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+import '../src/dist/checkout.css'
 import './App.css';
+
 import AuthService from './services/auth.service';
 import UserService from './services/user.service';
 import {formatCurrency, formatRound} from './formatCurrency';
+import LoadingState from './LoadingState';
 function UserPageReact(){
 
   const  lessonUsername  = JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''));
@@ -17,14 +20,17 @@ function UserPageReact(){
   const [avatar, setAvatar] = useState("");
   const [userReviewFlag, setUserReviewState] = useState(null)
   const [shopItems, setShopItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingSessions, setIsLoadingSessions] = useState(true);
   async function getData() {
       try{
-       const {data} = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
+       const {data} = await axios.post("http://localhost:4000/api/getshopitems",{
+        //https://snowboardaddictionreact.onrender.com
         })
         
         console.log(data);
         setShopItems(data);
-          
+        setIsLoading(false);
      
         
       
@@ -50,7 +56,7 @@ function UserPageReact(){
   
     const cartItems = orderData["cart"];
     console.log(cartItems)
-   cartItems.forEach((cartElement) => {
+    cartItems.forEach((cartElement) => {
   
       console.log(cartElement);
     
@@ -64,27 +70,29 @@ function UserPageReact(){
           }
        
         })
-    
+      
    ;
       })
       console.log(`matchingitem is getMatchingArray ${matchingItems}`);
-   
+    
       return matchingItems;   
     
     }
 
  const getJoinedData = async () =>{
-    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
+    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+      //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
     
   
     setSessions(data);
-
+    setIsLoadingSessions(false);
  }
 
  const getReviewData = async () =>{
-  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
+  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+    //https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   });
   
@@ -113,7 +121,8 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
+  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+//https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   })
   // console.log(data);
@@ -129,7 +138,7 @@ useEffect(() => {
 // },[orderData.length])
 
 const getLastOrder = async ()=>{
-  const  { data } = await axios.post('https://snowboardaddictionreact.onrender.com/api/getlastorder',{
+  const  { data } = await axios.post('/api/getlastorder',{
     username: lessonUsername
   })
   setOrderData(data.orders[data.orders.length - 1][0]);
@@ -196,7 +205,8 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userMainInfoContainer">
                   <div className='userNameAndAvatarContainer'>
                     <img
-                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
+                    src={`http://localhost:4000${avatar}`}
+                    //https://snowboardaddictionreact.onrender.com
                     className="avatar"
                     alt="logo"
                   />
@@ -206,7 +216,7 @@ const handleSendReview = (event, param1, param2) => {
                   </Link>
                   </div>
                   <div className='reviewContainer'>
-                    { ( userReviewFlag === null) ? <><span>....Loading</span></>: ( userReviewFlag) ? <><div className="postReviewText"><span>Thank you for leaving a review.</span></div></> : (!userReviewFlag) ? <> <div className="userReviewInput">
+                    { ( userReviewFlag === null) ? <> <LoadingState /></>: ( userReviewFlag) ? <><div className="postReviewText"><span>Thank you for leaving a review.</span></div></> : (!userReviewFlag) ? <> <div className="userReviewInput">
                               <textarea className="userReviewInputText" type="text" id="review" name="review" required  onChange={e => setUserReview(e.target.value)}/>
                               <label>Review</label>
                         </div>   
@@ -214,7 +224,11 @@ const handleSendReview = (event, param1, param2) => {
                   </div>
                   <div>
                   <div class="cart-item-details-grid-container-user-page">
-                      { 
+                      { isLoading ? 
+                        (
+                        <LoadingState />
+                        ) :
+                      
                       (orderData.length != 0) ?
                         getMatchingArray().map(items => 
                       
@@ -278,13 +292,13 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userLessonsContainer">
                   <h3 className='userSessionsTitle'>Joined sessions</h3>
                   <ol className='joinedSessionsList'>
-                    { data.map((sessions, index)=>
+                    {isLoadingSessions ? <><LoadingState/></>  : data.map((sessions, index)=>
 
                           (         <>
                           <li>
                             <div className="lessonType" key={index} value={sessions.lessonType}> {sessions.lessonType}</div> 
                             <div className="lessonDate" key={index}  value={sessions.lessonDate}> {sessions.lessonDate}</div> 
-                            <div className="lessonDesciption" key={index}  value={sessions.lessonDescription}> {sessions.lessonDescription} <button className="sessionLeaveButton" onClick={event=> handleLeaveLesson(event, sessions.lessonDate, sessions.lessonType)}>Leave the session</button> </div>
+                            <div className="lessonDescriptionUserPage" key={index}  value={sessions.lessonDescription}> {sessions.lessonDescription} <button className="sessionLeaveButton" onClick={event=> handleLeaveLesson(event, sessions.lessonDate, sessions.lessonType)}>Leave the session</button> </div>
                             </li>
                             </>
                           ))

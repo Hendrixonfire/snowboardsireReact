@@ -581,7 +581,10 @@ ol[role="list"] {
 }
 html {
   scroll-behavior: smooth;
+
+  
 }
+
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
@@ -591,7 +594,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
- 
+
 }
 /* Селекторы 2 */
 /* A elements that don't have a class get default styles */
@@ -617,9 +620,9 @@ select {
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 
 body {
-
-  position: relative;
+  overflow-y: auto;
   overflow-x: hidden;
+  position: relative;
   background: black;
   font-size: var(1.25rem);
   color: white;
@@ -628,6 +631,16 @@ body {
   */
   font-family: Kantumruy;
   font-size: 18px;
+}
+body::-webkit-scrollbar-track{
+  background-color: black;
+}
+body::-webkit-scrollbar-thumb{
+  background-color: #b906f0;
+}
+body::-webkit-scrollbar {
+  width: 0.2em;
+  background-color: #f5f5f5;
 }
 /* Селекторы 3  c колонкой и hyphens*/
 details[class*="mac"] {
@@ -717,6 +730,7 @@ details[class*="mac"] {
     opacity: 1;
   }
   }
+  
   #glow-on-hover-user{
 
     &:before{
@@ -917,6 +931,7 @@ header{
   align-items: center;
   transition: height .52s ease;
 }
+
 .loginFormDiv{
   margin-top: 10px;
   color: black;
@@ -1647,7 +1662,7 @@ display: grid;
 grid-auto-flow: dense;
 /* grid-template-columns: 1fr 1fr;
 grid-template-rows: 1fr 1fr; */
-grid-template-columns: repeat(auto-fit, minmax(min(100%,350px), 1fr));
+grid-template-columns: repeat(auto-fit, minmax(min(100%,370px), 1fr));
 max-width: 950px;
 margin: 35px auto;
 gap: 2rem;
@@ -1968,7 +1983,7 @@ margin-bottom: 75px;
 {
 border-radius: 0.25rem;
 overflow: hidden;
-
+scroll-snap-align: start;
 }
 .product-image-container-media{
   position: relative;
@@ -2868,12 +2883,10 @@ z-index: 10;
 
    padding: 0 10px 0 10px;
    margin: auto;
- 
    width: 80vw;
-  
    display: grid;
    color: #111;
-   grid-template-columns: 1fr 1fr 1fr;
+   grid-template-columns: 1fr 1fr 1fr 1fr;
    grid-auto-flow: column;
    align-items: center;
    position: relative;
@@ -2904,14 +2917,12 @@ z-index: 10;
     display: grid;
     grid-column: 2;
   }
-  .lessonDesciption{
+  .lessonDescription{
     text-transform: capitalize;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-shrink: none;
-    justify-content: space-between;
+
+ 
     align-items: center;
-    flex-direction: row;
+ 
     grid-column: 3;
     gap:1rem;
     font-size: 1rem;
@@ -2919,18 +2930,31 @@ z-index: 10;
       gap:0px
     }
   }
+  .lessonDescriptionUserPage{
+    text-transform: capitalize;
+    display: flex;
+    justify-content: space-between;
  
+ 
+ 
+ 
+    gap:1rem;
+    font-size: 1rem;
+    @media(max-width:400px){
+      gap:0px
+    }
+  }
   .sessionJoinButton{
+    display: grid;
     width: 120px;
-    min-width: 100px;
+    min-width: 55px;
     position: relative;
     height: 40px;
     border-radius: 8px;
     text-align: center;
     cursor: pointer;
-    @media(max-width:400px){
-      width: 65px;
-    }
+    justify-self: right;
+  
     &:hover{
       background-color: black;
       color: whitesmoke;
@@ -3092,17 +3116,35 @@ z-index: 10;
     }
   }
   .gridCollumnTitles{
+   
+   
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    
-    grid-auto-flow: column;
-    margin: auto;
+    grid-template-columns: subgrid;
+
+    grid-column: 1/5;
     color:whitesmoke;
-    width: 80vw;
+
     background-blend-mode: multiply;
     @media (max-width:400px){
       width: 90vw;
     }
+  }
+  .sessionTypeTitle{
+    display: grid;
+    grid-column: 1/2;
+  }
+  .sessionDateTitle{
+    display: grid;
+    grid-column: 2/3;
+
+  }
+  .sessionDescriptionTitle{
+    display: grid;
+    grid-column: 3/4;
+  }
+  .sessionDescriptionTitleEmpty{
+    grid-column: 4/5;
+    display: grid;
   }
   @media (max-width:850px ){
     .sessionBorderContainer{
@@ -3113,25 +3155,22 @@ z-index: 10;
       width: 100px;
       height: 30px;
     }
-    .sessionTypeTitle{
-      font-size: .9em;
-    }
-    .sessionDateTitle{
-      font-size: .9em;
-    }
-    .sessionDescriptionTitle{
-      font-size: .9em;
+
+  }
+  @media (max-width:400px){
+    .sessionJoinButton{
+    width: 90px;
     }
   }
-  @media (max-width:850px ){
+  @media (max-width:550px ){
     .sessionTypeTitle{
-      font-size: .7em;
+      font-size: .9em;
     }
     .sessionDateTitle{
-      font-size: .7em;
+      font-size: .9em;
     }
     .sessionDescriptionTitle{
-      font-size: .7em;
+      font-size: .9em;
     }
   }
   .userSearchInput{
@@ -3203,6 +3242,7 @@ z-index: 10;
   gap:1rem;
   display: flex;
   flex-direction: column;
+  margin-bottom: 15px;
 }
 @media (max-width:1300px){
   .searchDropContainer{
@@ -3264,6 +3304,7 @@ z-index: 10;
   margin: auto;
   height: 900px;
   overflow-y: scroll;
+  scroll-snap-type: y mandatory;
  
 }
 .mobileShopContainer::-webkit-scrollbar{
@@ -3307,9 +3348,9 @@ z-index: 10;
     height: 15px;
   }
   .added-to-cart{
-    scale: 0.4;
-    top: 1px;
-    left: -17px;
+    scale:0.9;
+    top: 10px;
+    left: 10px;
 
   }
 }

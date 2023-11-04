@@ -3,10 +3,9 @@ import './App.css';
 
 function TestimonialCard(props){
 
-   console.log("drawing cards");
     const [isIntersecting, setIsIntersecting] = useState(false);
-
     const ref = useRef(null);
+
     useEffect(() => {
       const observer = new IntersectionObserver(
         ([entry]) => {
@@ -14,7 +13,6 @@ function TestimonialCard(props){
         },
         { rootMargin: "-10px" }
       );
-
       observer.observe(ref.current);
       return () => observer.disconnect();
     }, [isIntersecting]);
@@ -22,14 +20,9 @@ function TestimonialCard(props){
     useEffect(() => {
       if (isIntersecting) {
         ref.current.classList.add('show');
-        // ref.current.querySelectorAll(".testimonialHidden").forEach((el) => {
-        //   el.classList.add('show');
-        // } );
+
       } else {
         ref.current.classList.remove('show');
-        // ref.current.querySelectorAll(".testimonialHidden").forEach((el) => {
-        //   el.classList.remove('show');
-        // });
       }
     }, [isIntersecting]);
 
@@ -51,8 +44,6 @@ function TestimonialCard(props){
                {props.cardDescriptionTwo}
             </p>
         </article>
-
-     
     )
 }
 export default TestimonialCard;

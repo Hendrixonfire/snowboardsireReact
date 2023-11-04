@@ -10,7 +10,6 @@ function EditProfilePageReact(){
 
   const  lessonUsername  = JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''));
   const [data, setSessions] = useState([]);
-  // const [dataReviews, setReview] = useState([]);
   const [isLeft, setIsLeft] = useState(false);
   const [userReview, setUserReview] = useState('');
   const [avatar, setAvatar] = useState("");
@@ -19,83 +18,68 @@ function EditProfilePageReact(){
   const inputAvatar = useRef(null);
   const { username } = useParams();
   const navigate = useNavigate();
-  console.log(username);
+
+
   const getJoinedData = async () =>{
-    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
+    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+      //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
-    
-  
     setSessions(data);
 
  }
- const getReviewData = async () =>{
-  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
-    username: lessonUsername
-  });
-  
-  console.log(data);
-  setUserReviewState(data);
 
- 
-}
-useEffect(()=>{
-  getReviewData();
+  const getReviewData = async () =>{
+    const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+      //https://snowboardaddictionreact.onrender.com
+      username: lessonUsername
+    });
+    setUserReviewState(data);
+  }
 
- }, [])
+  useEffect(()=>{
+    getReviewData();
+  }, [])
 
+  useEffect(()=>{
+      getJoinedData();
+  }, [isLeft])
 
+  useEffect(() => {
+     getUser();
+  }, []);
 
- useEffect(()=>{
-  getJoinedData();
-
- }, [isLeft])
- const getInitialState = () => {
-  const value = '';
-  return value;
-}; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
+  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+    //https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   })
   console.log(data);
   setAvatar(data.avatar);
 }
-useEffect(() => {
-  getUser();
-}, []);
 
-const handleChangeFile = async (event) => {
-  try {
-    const formData = new FormData();
-    const file = event.target.files[0];
-    formData.append("image", file);
 
-    const { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/upload", formData);
 
-    setAvatar(data.url);
+  const handleChangeFile = async (event) => {
+    try {
+      const formData = new FormData();
+      const file = event.target.files[0];
+      formData.append("image", file);
+      const { data } = await axios.post("/api/upload", formData);
+      setAvatar(data.url);
+    } catch (err) {
+      alert("Ошибка загрузки файла");
+    }
+  };
 
-    // console.log(event);
-  } catch (err) {
-    alert("Ошибка загрузки файла");
-  }
-};
 const saveChanges = async (event) => {
   event.preventDefault();
   try {
-  
-
     const fields = {
       avatar
     };
-
-    await axios.patch(`https://snowboardaddictionreact.onrender.com/api/update/${username}`, fields)
-     
+    await axios.patch(`/api/update/${username}`, fields)
     setLoading(false);
-
-
-   
-    // const addressMember = data.address;
     navigate(`/${username}`);
   } catch (err) {
     setLoading(false);
@@ -104,65 +88,25 @@ const saveChanges = async (event) => {
   }
 };
      
-    
-// useEffect(() => {
-//   if (username) {
-//     axios
-//       .get(`/member/${username}`)
-//       .then(({ data }) => {
-//         setAvatar(data.avatar);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//         alert("Ошибка получения профиля");
-//       });
-//   }
-// }, []);
-
-const handleLeaveLesson = (event, param1, param2) => {
-     
-  console.log(`${JSON.parse(localStorage.getItem("user").replace(/(?=,(?!"))(,(?!{))/g,''))} thanks for joining ${param2} lesson on: ${param1}`);
-  AuthService.leaveLesson(lessonUsername,  param1, param2).then(
-    ()  => {
-      console.log('User left the session');
-      setIsLeft(prev=>!prev);
-    },
-    
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-            console.log(resMessage);
-        }
-  )
- 
-
-}
-const handleSendReview = (event, param1, param2) => {
-     
-
-  UserService.sendReview(param1, param2).then(
-    ()  => {
-      console.log('User left a review');
-      setUserReviewState(prev=>!prev);
-    },
-    
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
-            console.log(resMessage);
-        }
-  )
- 
-
-}
+      
+  const handleSendReview = (event, param1, param2) => {
+    UserService.sendReview(param1, param2).then(
+      ()  => {
+        console.log('User left a review');
+        setUserReviewState(prev=>!prev);
+      },
+      
+          (error) => {
+            const resMessage =
+              (error.response &&
+                error.response.data &&
+                error.response.data.message) ||
+              error.message ||
+              error.toString();
+              console.log(resMessage);
+          }
+    )
+  }
 
     return(
       <div className="UserEditPageContainer">
@@ -175,7 +119,8 @@ const handleSendReview = (event, param1, param2) => {
                   <div className='userEditNameAndAvatarContainer'>
                   <form className="editForm" onSubmit={saveChanges}>
                     <img
-                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
+                    src={`http://localhost:4000${avatar}`}
+                    //https://snowboardaddictionreact.onrender.com
                     className="avatar"
                     alt="logo"
                     onClick={() => inputAvatar.current.click()}

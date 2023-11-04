@@ -1,8 +1,7 @@
 
-import './App.css';
+
 
 export function generator(arr){
-
     function shuffleArray (arr) {
         for (let i = arr.length - 1; i > 0; i--) {
           let j = Math.floor(Math.random() * (i + 1));
@@ -32,13 +31,10 @@ export function generator(arr){
         }
       }
       const entryGenerator = sampleArray(arr)
-     
-      return entryGenerator;
-
+     return entryGenerator;
 }
 
 export function getMultipleRandom(arr, num) {
   const shuffled = [...arr].sort(() => 0.5 - Math.random());
-
   return shuffled.slice(0, num);
 }

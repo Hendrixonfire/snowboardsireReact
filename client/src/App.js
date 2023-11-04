@@ -1,58 +1,57 @@
-import React,{useEffect, useState } from 'react'
+import React, { Suspense, lazy }from 'react'
 import './App.css';
 import Protected from  "./protec"
-import Home from './Home'
-// import { HelmetProvider } from 'react-helmet-async';
-import Login from './login'
-import Register from './register'
-import Profile from './Profile'
-import UserPageReact from './userPage'
-import EditProfilePageReact from './editProfile';
-import SessionsReactPage from './sessionRegister';
-import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom';
-import CheckOutReactPage from './checkOut';
-import MediaElementWithFullDescription from './mediaElementWithFullDescruption';
-//import { useExternalScript } from "./useExternalScript";
+// import Home from './Home'
+const Home = lazy(()=>
+ import ('./Home.js')
+)
+const Login = lazy(()=>
+ import ('./login.js')
+)
+const Register = lazy(()=>
+ import ('./register.js')
+)
+const UserPageReact = lazy(()=>
+ import ('./userPage.js')
+)
+const EditProfilePageReact = lazy(()=>
+ import ('./editProfile.js')
+)
+const SessionsReactPage = lazy(()=>
+ import ('./sessionRegister.js')
+)
+const CheckOutReactPage = lazy(()=>
+ import ('./checkOut.js')
+)
+const MediaElementWithFullDescription = lazy(()=>
+ import ('./mediaElementWithFullDescruption.js')
+)
+// import Login from './login'
+// import Register from './register'
+
+// import UserPageReact from './userPage'
+// import EditProfilePageReact from './editProfile';
+// import SessionsReactPage from './sessionRegister';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import LoadingState from './LoadingState.js';
+// import CheckOutReactPage from './checkOut';
+// import MediaElementWithFullDescription from './mediaElementWithFullDescruption';
+
 function App() {
  
-  //const externalScript = "./logic/new2.js";
- // const state = useExternalScript(externalScript);
 
- /*
-  const [state, setState] = useState(null);
-
-  const callBackendAPI = async () => {
-    const response = await fetch('/express_backend');
-    const body = await response.json();
-
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-    return body;
-  };
-  
-
-  useEffect(() => {
-    callBackendAPI()
-    .then(res => setState(res.express))
-    .catch(err => console.log(err));
-  }, [])
-*/
   return (
 
- 
+ <Suspense fallback={<LoadingState/>}>
     <Routes>
     
    
         <Route path="/" exact={true} element={<Home /> } />
         <Route path="/Login" exact element={<Login />} /> 
         <Route path="/Register" exact element={<Register />} /> 
-        <Route path="/Profile" exact element={<Profile />} /> 
+   
         
-        <Route path="/Checkout" exact element={
-          
-        <CheckOutReactPage />
-        } /> 
+        <Route path="/Checkout" exact element={<CheckOutReactPage />} /> 
 
         <Route path="/Sessions" exact={true}  element={
           <Protected isLoggedIn={localStorage.getItem("user")}>
@@ -68,7 +67,7 @@ function App() {
           </Protected>} />
           <Route path="shopitemfull/:id" element={<MediaElementWithFullDescription />} />
     </Routes>
-
+    </Suspense>
   );
 }
 
