@@ -21,7 +21,7 @@ function EditProfilePageReact(){
 
 
   const getJoinedData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
       //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
@@ -30,7 +30,7 @@ function EditProfilePageReact(){
  }
 
   const getReviewData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
       //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
@@ -50,7 +50,7 @@ function EditProfilePageReact(){
   }, []);
 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
     //https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   })
@@ -65,7 +65,7 @@ const getUser = async ()=>{
       const formData = new FormData();
       const file = event.target.files[0];
       formData.append("image", file);
-      const { data } = await axios.post("/api/upload", formData);
+      const { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/upload", formData);
       setAvatar(data.url);
     } catch (err) {
       alert("Ошибка загрузки файла");
@@ -119,7 +119,7 @@ const saveChanges = async (event) => {
                   <div className='userEditNameAndAvatarContainer'>
                   <form className="editForm" onSubmit={saveChanges}>
                     <img
-                    src={`http://localhost:4000${avatar}`}
+                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
                     //https://snowboardaddictionreact.onrender.com
                     className="avatar"
                     alt="logo"
