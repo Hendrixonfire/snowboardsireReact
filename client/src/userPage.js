@@ -24,7 +24,7 @@ function UserPageReact(){
   const [isLoadingSessions, setIsLoadingSessions] = useState(true);
   async function getData() {
       try{
-       const {data} = await axios.post("http://localhost:4000/api/getshopitems",{
+       const {data} = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
         //https://snowboardaddictionreact.onrender.com
         })
         
@@ -80,7 +80,7 @@ function UserPageReact(){
     }
 
  const getJoinedData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/joinedSessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/joinedSessions",{
       //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
@@ -91,7 +91,7 @@ function UserPageReact(){
  }
 
  const getReviewData = async () =>{
-  const  { data } = await axios.post("http://localhost:4000/api/userReviews",{
+  const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/userReviews",{
     //https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   });
@@ -121,7 +121,7 @@ useEffect(()=>{
   return value;
 }; 
 const getUser = async ()=>{
-  const  { data } = await axios.post(`http://localhost:4000/api/member`,{
+  const  { data } = await axios.post(`https://snowboardaddictionreact.onrender.com/api/member`,{
 //https://snowboardaddictionreact.onrender.com
     username: lessonUsername
   })
@@ -138,7 +138,7 @@ useEffect(() => {
 // },[orderData.length])
 
 const getLastOrder = async ()=>{
-  const  { data } = await axios.post('/api/getlastorder',{
+  const  { data } = await axios.post('https://snowboardaddictionreact.onrender.com/api/getlastorder',{
     username: lessonUsername
   })
   setOrderData(data.orders[data.orders.length - 1][0]);
@@ -205,7 +205,7 @@ const handleSendReview = (event, param1, param2) => {
                 <div className="userMainInfoContainer">
                   <div className='userNameAndAvatarContainer'>
                     <img
-                    src={`http://localhost:4000${avatar}`}
+                    src={`https://snowboardaddictionreact.onrender.com${avatar}`}
                     //https://snowboardaddictionreact.onrender.com
                     className="avatar"
                     alt="logo"
