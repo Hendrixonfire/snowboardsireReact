@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import AuthService from './services/auth.service';
-import {useNavigate} from 'react-router-dom'
+
 import '../src/dist/modal.css';
 
 function Modal({
@@ -12,11 +12,12 @@ function Modal({
   btn2
 }) {
 
-  const navigate = useNavigate();
+
   const clickLogout = () => {
     AuthService.logout().then(
         () => {
-          navigate("/");
+          setActive(false);
+           window.location.reload(true)
         },
         (error) => {
           const resMessage =
