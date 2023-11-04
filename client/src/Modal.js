@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import AuthService from './services/auth.service';
-
+import useState from 'react'
 import '../src/dist/modal.css';
 
 function Modal({
@@ -11,7 +11,7 @@ function Modal({
   btn1,
   btn2
 }) {
-
+const [active, setActive] = useState(false);
 
   const clickLogout = () => {
     AuthService.logout().then(
