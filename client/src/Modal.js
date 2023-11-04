@@ -14,21 +14,24 @@ function Modal({
 
 
   const clickLogout = () => {
-    AuthService.logout().then(
-        () => {
-           setActive(false);
+    AuthService.logout();
+     setActive(false);
+    window.location.reload(true)
+      // then(
+      //   () => {
+      //      setActive(false);
         
-        },
-        (error) => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
+      //   },
+      //   (error) => {
+      //     const resMessage =
+      //       (error.response &&
+      //         error.response.data &&
+      //         error.response.data.message) ||
+      //       error.message ||
+      //       error.toString();
   
-        }
-      );
+      //   }
+      // );
   };
 
 
