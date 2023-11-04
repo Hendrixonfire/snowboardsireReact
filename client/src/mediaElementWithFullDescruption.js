@@ -10,7 +10,7 @@ function MediaElementWithFullDescription(){
     const { id } = useParams();
     const shopItemFull = shopItems.find((b) =>  b._id == id);
     const getData = async () =>{
-        const  { data } = await axios.post("http://localhost:4000/api/getshopitems",{
+        const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/getshopitems",{
           //https://snowboardaddictionreact.onrender.com
         });
         setShopItems(data);
