@@ -384,19 +384,19 @@ const Path = (props) => (
                         </div>
                       </div>
                       <div className="grid feature-grid">
-                        <img className="treesmall" src="images/Polygon 2.png" alt=""></img>
-                        <img className="tree" src="images/Polygon 3 (2).png" alt=""></img>
-                        <img className="tree" src="images/Polygon 6.png" alt=""></img>
-                        <img className="bottom" src="images/Polygon 7 (2).png" alt=""></img>
-                        <img className="sunwhite" src="images/Ellipse 1.png" alt=""></img>
+                        <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
+                        <img className="tree" src="images/Polygon 3 (2).webp" alt=""></img>
+                        <img className="tree" src="images/Polygon 6.webp" alt=""></img>
+                        <img className="bottom" src="images/Polygon 7 (2).webp" alt=""></img>
+                        <img className="sunwhite" src="images/Ellipse 1.webp" alt=""></img>
                       
-                        <img className="sunbluish" src="images/Ellipse 3 (2).png" alt=""></img>
-                        <img className="cloud " src="images/pattern (2) 2.png" alt=""></img>
-                        <img className="cloud " src="images/pattern (2) 3.png" alt=""></img>
-                        <img className="cloudbig " src="images/Vector.png" alt=""></img>
-                        <img className="snowboarder" id="snowboardertwo" src="images/snowboarder.png" alt=""></img>
-                        <img className="treesmall" src="images/Polygon 2.png" alt=""></img>
-                        <img className="tree" src="images/Polygon 6.png" alt=""></img>
+                        <img className="sunbluish" src="images/Ellipse 3 (2).webp" alt=""></img>
+                        <img className="cloud " src="images/pattern (2) 2.webp" alt=""></img>
+                        <img className="cloud " src="images/pattern (2) 3.webp" alt=""></img>
+                        <img className="cloudbig " src="images/Vector.webp" alt=""></img>
+                        <img className="snowboarder" id="snowboardertwo" src="images/snowboarder.webp" alt=""></img>
+                        <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
+                        <img className="tree" src="images/Polygon 6.webp" alt=""></img>
                       </div>
             
                     </div>
