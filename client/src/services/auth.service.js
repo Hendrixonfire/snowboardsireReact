@@ -17,7 +17,7 @@ const register = (registerUsername, registerEmail, registerPassword) => {
 }
 
 const login = (loginEmail, loginPassword) => {
-  return axios.post('/api/login', {
+  return axios.post('https://snowboardaddictionreact.onrender.com/api/login', {
               email: loginEmail,
               password: loginPassword
           })
@@ -35,7 +35,7 @@ const login = (loginEmail, loginPassword) => {
  const logout = () => {
    localStorage.removeItem("user");
    localStorage.removeItem("cart");
-   return axios.post('/api/logout?_method=DELETE').
+   return axios.post('https://snowboardaddictionreact.onrender.com/api/logout?_method=DELETE').
    then((response) => {
   
      return response.data;
@@ -48,7 +48,7 @@ const login = (loginEmail, loginPassword) => {
  };
 
  const joinLesson = (lessonUsername,param1,param2) => {
-  return axios.post('api/joinLesson',{
+  return axios.post('https://snowboardaddictionreact.onrender.com/api/joinLesson',{
     username: lessonUsername,
     lessonType:  param2,
     lessonDate: param1
@@ -60,7 +60,7 @@ const login = (loginEmail, loginPassword) => {
 }
 
 const placeOrder = (cartUsername,param1) => {
-  return axios.post('api/placeorder',{
+  return axios.post('https://snowboardaddictionreact.onrender.com/api/placeorder',{
     username: cartUsername,
     data:  param1
   })
@@ -70,7 +70,7 @@ const placeOrder = (cartUsername,param1) => {
 }
 
 const leaveLesson = (lessonUsername,param1,param2) => {
-  return axios.post('api/leaveLesson',{
+  return axios.post('https://snowboardaddictionreact.onrender.com/api/leaveLesson',{
     username: lessonUsername,
     lessonType:  param2,
     lessonDate: param1
