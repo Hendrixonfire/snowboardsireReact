@@ -11,13 +11,13 @@ function Modal({
   btn1,
   btn2
 }) {
-const [active, setActive] = useState(false);
+
 
   const clickLogout = () => {
     AuthService.logout().then(
         () => {
-          setActive(false);
-           window.location.reload(true)
+           setActive(false);
+        
         },
         (error) => {
           const resMessage =
