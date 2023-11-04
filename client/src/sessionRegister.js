@@ -13,7 +13,7 @@ function SessionsReactPage(){
  const [userInputData, setUserInputData] = useState('');
 
  const getData = async () =>{
-    const  { data } = await axios.post("http://localhost:4000/api/sessions",{
+    const  { data } = await axios.post("https://snowboardaddictionreact.onrender.com/api/sessions",{
       //https://snowboardaddictionreact.onrender.com
       username: lessonUsername
     });
