@@ -1,5 +1,7 @@
 import React, { Suspense, lazy }from 'react'
 import './App.css';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import LoadingState from './LoadingState.js';
 import Protected from  "./protec"
 // import Home from './Home'
 const Home = lazy(()=>
@@ -26,16 +28,7 @@ const CheckOutReactPage = lazy(()=>
 const MediaElementWithFullDescription = lazy(()=>
  import ('./mediaElementWithFullDescruption.js')
 )
-// import Login from './login'
-// import Register from './register'
 
-// import UserPageReact from './userPage'
-// import EditProfilePageReact from './editProfile';
-// import SessionsReactPage from './sessionRegister';
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
-import LoadingState from './LoadingState.js';
-// import CheckOutReactPage from './checkOut';
-// import MediaElementWithFullDescription from './mediaElementWithFullDescruption';
 
 function App() {
  
