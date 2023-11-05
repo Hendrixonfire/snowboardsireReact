@@ -205,6 +205,9 @@
   cursor: pointer;
   transition: color 0.4 linear;
   z-index: 13;
+  @media (max-width:650px){
+    position: relative;
+  }
 }
 .button:focus {
   color: purple;
@@ -253,6 +256,7 @@
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 2.5rem 3.75rem 3rem -3rem 217 19% 35% / 0.25;
+ 
 }
 
 .testimonial img {
@@ -1459,6 +1463,9 @@ cursor: pointer;
   z-index: -1;
   pointer-events: none;
   user-select: none;
+  @media(max-width:650px){
+    display:none;
+  }
 }
 .mac-book-air1-text02 {
   position: absolute;

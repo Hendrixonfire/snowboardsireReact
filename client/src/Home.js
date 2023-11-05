@@ -141,13 +141,16 @@ function Home() {
           snowboarder.style.left = value + 'px';
           snowboarder.style.bottom = -(value)*0.4 + 'px';
     });
-        
+    
+
+     
     return () => {
           window.removeEventListener('scroll', function(){
             let value = window.scrollY;
             snowboarder.style.left = value + 'px';
             snowboarder.style.bottom = -(value)*0.4 + 'px';
         });
+        
     }}, []);
 
     useEffect(() => {
@@ -383,33 +386,40 @@ const Path = (props) => (
                           }
                         </div>
                       </div>
-                      <div className="grid feature-grid">
-                        <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
-                        <img className="tree" src="images/Polygon 3 (2).webp" alt=""></img>
-                        <img className="tree" src="images/Polygon 6.webp" alt=""></img>
-                        <img className="bottom" src="images/Polygon 7 (2).webp" alt=""></img>
-                        <img className="sunwhite" src="images/Ellipse 1.webp" alt=""></img>
                       
-                        <img className="sunbluish" src="images/Ellipse 3 (2).webp" alt=""></img>
-                        <img className="cloud " src="images/pattern (2) 2.webp" alt=""></img>
-                        <img className="cloud " src="images/pattern (2) 3.webp" alt=""></img>
-                        <img className="cloudbig " src="images/Vector.webp" alt=""></img>
-                        <img className="snowboarder" id="snowboardertwo" src="images/snowboarder.webp" alt=""></img>
-                        <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
-                        <img className="tree" src="images/Polygon 6.webp" alt=""></img>
-                      </div>
+                       
+                          <div className="grid feature-grid" style={mobile ? {display : 'none'} : {display:"grid"} }>
+                          <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
+                          <img className="tree" src="images/Polygon 3 (2).webp" alt=""></img>
+                          <img className="tree" src="images/Polygon 6.webp" alt=""></img>
+                          <img className="bottom" src="images/Polygon 7 (2).webp" alt=""></img>
+                          <img className="sunwhite" src="images/Ellipse 1.webp" alt=""></img>
+                        
+                          <img className="sunbluish" src="images/Ellipse 3 (2).webp" alt=""></img>
+                          <img className="cloud " src="images/pattern (2) 2.webp" alt=""></img>
+                          <img className="cloud " src="images/pattern (2) 3.webp" alt=""></img>
+                          <img className="cloudbig " src="images/Vector.webp" alt=""></img>
+                          <img className="snowboarder" id="snowboardertwo" src="images/snowboarder.webp" alt=""></img>
+                          <img className="treesmall" src="images/Polygon 2.webp" alt=""></img>
+                          <img className="tree" src="images/Polygon 6.webp" alt=""></img>
+                        </div>
+                        
+                      
+                
             
                     </div>
                     </div>
                 </section>
-             
-                <video autoPlay loop muted playsInline className="backvideo">
-                  <source src="./images/snowvideo.mp4" type="video/mp4" />
-                </video>
+            
+                    <video autoPlay loop muted playsInline className="backvideo">
+                    <source src="./images/snowvideo.mp4" type="video/mp4" />
+                  </video>
+            
+                   
                           <main className="testimonial-grid" >
                             { getMultipleRandom(cards,5).map((card)=>
                                 ( 
-                                  ( <TestimonialCard  cardStyle={randomArrayCardStyle.next().value} cardGridSpan ={((card.cardId === 1) || (card.cardId === 4) || (card.cardId===5)) ? 'grid-col-span-2': ''} cardUserName={card.cardUserName} cardPosition={card.cardPosition} cardDescriptionOne={card.cardDescriptionOne} cardDescriptionTwo={card.cardDescriptionTwo} cardImage={card.cardImage}  /> )
+                                  ( <TestimonialCard isMobile={mobile} cardStyle={randomArrayCardStyle.next().value} cardGridSpan ={((card.cardId === 1) || (card.cardId === 4) || (card.cardId===5)) ? 'grid-col-span-2': ''} cardUserName={card.cardUserName} cardPosition={card.cardPosition} cardDescriptionOne={card.cardDescriptionOne} cardDescriptionTwo={card.cardDescriptionTwo} cardImage={card.cardImage}  /> )
                                 )
                               )
                              }

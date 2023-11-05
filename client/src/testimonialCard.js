@@ -3,7 +3,7 @@ import './App.css';
 
 function TestimonialCard(props){
 
-    const [isIntersecting, setIsIntersecting] = useState(false);
+    const [isIntersecting, setIsIntersecting] = useState(true);
     const ref = useRef(null);
 
     useEffect(() => {
@@ -11,7 +11,7 @@ function TestimonialCard(props){
         ([entry]) => {
           setIsIntersecting(entry.isIntersecting);
         },
-        { rootMargin: "-10px" }
+        { rootMargin: "-40px" }
       );
       observer.observe(ref.current);
       return () => observer.disconnect();
@@ -23,11 +23,12 @@ function TestimonialCard(props){
 
       } else {
         ref.current.classList.remove('show');
+       
       }
     }, [isIntersecting]);
 
     return(
-        <article className={`testimonial testimonialHover flow ${(props.cardStyle === 1) ? 'purpleCard' : (props.cardStyle === 2) ? 'greyCard': (props.cardStyle === 3) ? 'whiteCard': (props.cardStyle === 4) ? 'turquoiseCard': 'greyCard'} quote ${props.cardGridSpan} testimonialHidden`}  ref={ref} >
+        <article className={`testimonial testimonialHover flow ${(props.cardStyle === 1) ? 'purpleCard' : (props.cardStyle === 2) ? 'greyCard': (props.cardStyle === 3) ? 'whiteCard': (props.cardStyle === 4) ? 'turquoiseCard': 'greyCard'} quote ${props.cardGridSpan} testimonialHidden`}  ref={ref} style={{opacity: (props.isMobile && isIntersecting)  ? 1 : ""}} >
             <div className="flex">
              <div>
                 <img src={props.cardImage} alt={props.cardUserName} />
