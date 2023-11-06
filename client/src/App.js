@@ -1,41 +1,24 @@
-import React, { Suspense, lazy }from 'react'
+import React,{useEffect, useState } from 'react'
 import './App.css';
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
-import LoadingState from './LoadingState.js';
 import Protected from  "./protec"
-// import Home from './Home'
-const Home = lazy(()=>
- import ('./Home.js')
-)
-const Login = lazy(()=>
- import ('./login.js')
-)
-const Register = lazy(()=>
- import ('./register.js')
-)
-const UserPageReact = lazy(()=>
- import ('./userPage.js')
-)
-const EditProfilePageReact = lazy(()=>
- import ('./editProfile.js')
-)
-const SessionsReactPage = lazy(()=>
- import ('./sessionRegister.js')
-)
-const CheckOutReactPage = lazy(()=>
- import ('./checkOut.js')
-)
-const MediaElementWithFullDescription = lazy(()=>
- import ('./mediaElementWithFullDescruption.js')
-)
-
+import Home from './Home'
+// import { HelmetProvider } from 'react-helmet-async';
+import Login from './login'
+import Register from './register'
+import Profile from './Profile'
+import UserPageReact from './userPage'
+import EditProfilePageReact from './editProfile';
+import SessionsReactPage from './sessionRegister';
+import {BrowserRouter as Router,Route,Routes,Link} from 'react-router-dom';
+import CheckOutReactPage from './checkOut';
+import MediaElementWithFullDescription from './mediaElementWithFullDescruption';
 
 function App() {
  
 
   return (
 
- <Suspense fallback={<LoadingState/>}>
+
     <Routes>
     
    
@@ -60,7 +43,7 @@ function App() {
           </Protected>} />
           <Route path="shopitemfull/:id" element={<MediaElementWithFullDescription />} />
     </Routes>
-    </Suspense>
+  
   );
 }
 
