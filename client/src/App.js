@@ -5,7 +5,6 @@ import Home from './Home'
 // import { HelmetProvider } from 'react-helmet-async';
 import Login from './login'
 import Register from './register'
-import Profile from './Profile'
 import UserPageReact from './userPage'
 import EditProfilePageReact from './editProfile';
 import SessionsReactPage from './sessionRegister';
