@@ -254,7 +254,7 @@ const handleSendReview = (event, param1, param2) => {
                               </div>
                              </div>
                             
-                          )) : <div>No data</div>
+                          )) :  ''
                       
                       }
                          </div>        
