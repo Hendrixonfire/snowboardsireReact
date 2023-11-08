@@ -4,11 +4,13 @@ import { Helmet } from "react-helmet"
 import {Link, useNavigate } from 'react-router-dom'
 import Form from "react-validation/build/form";
 import AuthService from "./services/auth.service";
-
+import { motion } from "framer-motion";
+import '../src/dist/loadingstate.css'
 
 const Register = () => {
     const [registerUsername, setRegisterUsername] = useState('')
     const [registerPassword, setRegisterPassword] = useState('')
+    const [loading, setLoading] = useState(false);
     const [registerEmail, setRegisterEmail] = useState('')
     let navigate = useNavigate(); 
     const form = useRef();
@@ -16,6 +18,7 @@ const Register = () => {
     const handleRegister = (e) => {
       e.preventDefault();
       form.current.validateAll();
+      setLoading(true);
         AuthService.register(registerUsername, registerEmail, registerPassword).then(
           () => {
               navigate("/Login");
@@ -63,7 +66,21 @@ const Register = () => {
                     </label>
                     
                     </div>
-                    <button type="submit" className="btnRegister" >Register</button>
+                    {loading ?   <button type="submit" className="btnRegisterLoading" id="glow-on-hover-register-loading" >Making your Account....
+                    <motion.div
+                            className="loaderRegister"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, ease: "linear", repeat: Infinity }}
+                          >
+                                <motion.div className="loadingCircleRegister"></motion.div>
+                    </motion.div>
+                    </button> :
+                      (
+                        <button type="submit" className="btnRegister" >Register</button>
+                      )
+
+                      }
+              
                     <div className="loginRegisterRegister">
                     <p>Already have an account? <Link to="/Login" className="loginLinkRegister">Login</Link></p>
                     </div>
