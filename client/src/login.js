@@ -3,6 +3,9 @@ import {Link, useNavigate, redirect} from 'react-router-dom'
 import Form from "react-validation/build/form";
 import { Helmet } from "react-helmet"
 import AuthService from "./services/auth.service";
+import { motion } from "framer-motion";
+import '../src/dist/loadingstate.css'
+
 const required = (value) => {
   if (!value) {
     return (
@@ -42,7 +45,8 @@ const required = (value) => {
         AuthService.login(loginEmail, loginPassword).then(
             (res) => {
               if (res){
-                navigate("/");
+                setTimeout(navigate("/"), 4000)
+              
               }
             },
             (error) => {
@@ -92,7 +96,22 @@ const required = (value) => {
                           </label>
                           <a href="/">Forgot Password?</a>
                       </div>
-                      <button type="submit" className="btnLogin">Login</button>
+                      {loading ? 
+                       <button type="submit" className="btnLoginLoading" id="glow-on-hover-login-loading" >Login in progress..
+                          <motion.div
+                            className="loaderLogin"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1, ease: "linear", repeat: Infinity }}
+                          >
+                                <motion.div className="loadingCircleLogin"></motion.div>
+                          </motion.div>
+                      </button> :
+                      (
+                        <button type="submit" className="btnLogin">Login</button>
+                      )
+
+                      }
+                     
                       <div className="loginRegisterLogin">
                           <p>Don't have an account? <Link to="/Register" className="registerLinkLogin">Register</Link></p>
                       </div>
