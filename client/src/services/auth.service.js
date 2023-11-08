@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const register = (registerUsername, registerEmail, registerPassword) => {
-  return axios.post('/api/register', {
+  return axios.post('https://snowboardaddictionreact.onrender.com/api/register', {
         username: registerUsername,
         email: registerEmail,
         password: registerPassword
