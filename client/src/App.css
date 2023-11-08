@@ -238,7 +238,14 @@
 .button1:hover::before {
   transform: scalex(1);
 }
-
+.button1{
+  &:focus-within{
+    color:white;
+    background-color: #000000;
+    border: 2px solid purple;
+    outline: none;
+  }
+}
 .testimonialHidden {
   opacity: 0;
   transition: all 1s;
@@ -1991,6 +1998,9 @@ margin-bottom: 75px;
 border-radius: 0.25rem;
 overflow: hidden;
 scroll-snap-align: start;
+&:focus-within{
+  border: 2px solid purple  ;
+}
 }
 .product-image-container-media{
   position: relative;
@@ -2487,8 +2497,120 @@ color: white;
 cursor: pointer;
 font-size: 1em;
 font-weight: 500;
+transition: transform .5s linear;
+&:hover{
+  color:paleturquoise;
+  transform:scale(1.03);
+}
+&:focus-within{
+  color:paleturquoise;
+  transform:scale(1.03);
+  border: 3px solid paleturquoise;
+}
 
 }
+.btnLoginLoading{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background: #a502ca;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+}
+#glow-on-hover-login-loading{
+
+  &:before{
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    animation: animate 20s linear infinite;
+    opacity: 1;
+    transition:  1s ease-in-out;
+    border-radius: 10px;
+  }
+  &:after{
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  &:active{
+    color: azure;
+  }
+  
+  
+
+  }
+  .btnRegisterLoading{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    height: 45px;
+    background: #a502ca;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+  }
+  #glow-on-hover-register-loading{
+  
+    &:before{
+      content: '';
+      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+      position: absolute;
+      top: -2px;
+      left:-2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      animation: animate 20s linear infinite;
+      opacity: 1;
+      transition:  1s ease-in-out;
+      border-radius: 10px;
+    }
+    &:after{
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+    }
+    &:active{
+      color: azure;
+    }
+    
+    
+  
+    }
 .loginRegisterLogin{
 font-size: .9em;
 color:#162938;
@@ -2654,7 +2776,6 @@ RegisterPage css
   position: relative;
   width: 400px;
   height: 440px;
-
   border: 2px solid rgba(24, 22, 22, 0.5);
   border-radius: 20px;
   display: flex;
@@ -2662,9 +2783,7 @@ RegisterPage css
   align-items: center;
   transition: transform .5s ease, height .2s ease;
   overflow: hidden;
-  
- 
-  background: rgba(255,255,255, 0.2);
+  background: rgba(255,255,255, 0.5);
   backdrop-filter: blur(10px) ;
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 10px 10px 30px rgba(0,0,0, 0.2);
@@ -2809,7 +2928,16 @@ z-index: 10;
   cursor: pointer;
   font-size: 1em;
   font-weight: 500;
-
+  transition: transform .5s linear;
+  &:hover{
+    color:paleturquoise;
+    transform:scale(1.03);
+  }
+  &:focus-within{
+    color:paleturquoise;
+    transform:scale(1.03);
+    border: 3px solid paleturquoise;
+  }
 }
 .loginRegisterRegister{
   font-size: .9em;
